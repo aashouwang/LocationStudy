@@ -14,6 +14,8 @@
 {
     CLLocationManager * _locationManager;
     CLGeocoder * _geocoder;
+    
+    UILabel * _locationLabel;
 }
 @end
 

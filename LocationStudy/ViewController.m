@@ -49,6 +49,20 @@
     [button setTitle:@"Action Sheet" forState:UIControlStateNormal];
     [button addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
+    
+    _locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 120, 280, 40)];
+    _locationLabel.layer.cornerRadius = 8.0f;
+//    _locationLabel.layer.masksToBounds = YES;
+    _locationLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    _locationLabel.layer.shadowOffset = CGSizeMake(0, 1);
+    _locationLabel.layer.shadowOpacity = 0.5f;
+    _locationLabel.layer.shadowRadius = 2.0f;
+    _locationLabel.backgroundColor = [UIColor whiteColor];
+    _locationLabel.font = [UIFont systemFontOfSize:20];
+    _locationLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:_locationLabel];
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -103,6 +117,8 @@
         CLPlacemark *placemark=[placemarks firstObject];
         NSLog(@"详细信息:%@",placemark.addressDictionary);
         NSDictionary * dic = placemark.addressDictionary;
+        
+        _locationLabel.text = [[dic objectForKey:@"FormattedAddressLines"] firstObject];
         
         NSString * messagestr = [NSString stringWithFormat:@"国家：%@\n城市：%@\nformattedAddressLines:%@\nName:%@\n街道：%@\nstate:%@\nSubLocality:%@\nSubThoroughfare:%@\nThoroughfare:%@", [dic objectForKey:@"Country"], [dic objectForKey:@"City"], [[dic objectForKey:@"FormattedAddressLines"] firstObject], [dic objectForKey:@"Name"], [dic objectForKey:@"Street"], [dic objectForKey:@"State"], [dic objectForKey:@"SubLocality"], [dic objectForKey:@"SubThoroughfare"], [dic objectForKey:@"Thoroughfare"]];
         
