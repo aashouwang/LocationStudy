@@ -50,13 +50,14 @@
     [button addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     
-    _locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 120, 280, 40)];
-    _locationLabel.layer.cornerRadius = 8.0f;
-//    _locationLabel.layer.masksToBounds = YES;
+    _locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 120, 280, 300)];
+    _locationLabel.layer.cornerRadius = 10.0f;
+    _locationLabel.layer.masksToBounds = NO;
     _locationLabel.layer.shadowColor = [UIColor blackColor].CGColor;
     _locationLabel.layer.shadowOffset = CGSizeMake(0, 1);
     _locationLabel.layer.shadowOpacity = 0.5f;
     _locationLabel.layer.shadowRadius = 2.0f;
+    _locationLabel.numberOfLines = 0;
     _locationLabel.backgroundColor = [UIColor whiteColor];
     _locationLabel.font = [UIFont systemFontOfSize:20];
     _locationLabel.textAlignment = NSTextAlignmentCenter;
